@@ -117,7 +117,7 @@ def insert_staff(data):
             transf_row[i] = row[i]
 
         cursor.execute(
-            "INSERT INTO coffeeShopEtl.Staff (staff_id,first_name,last_name,positions,start_date,location) VALUES(%s,%s,%s,%s,%s,%s)",
+            "INSERT INTO coffeeShopEtl.Staff (staff_id,first_name,last_name,position,start_date,location) VALUES(%s,%s,%s,%s,%s,%s)",
             transf_row)
 
     db.commit()
