@@ -77,9 +77,24 @@ class SalesOutlet(BaseModel):
         db_table = 'Sales_Outlet'
 
 
+class PastryInventory(BaseModel):
+    pastry_inventory_id = IntegerField(primary_key=True, unique=True, null=False)
+    sales_outlet_id = IntegerField(null=False)
+    transaction_date = DateField(null=True)
+    product_id = IntegerField(null=True)
+    start_of_day = IntegerField(null=True)
+    quantity_sold = IntegerField(null=True)
+    waste = IntegerField(null=True)
+    waste_percent = IntegerField(null=True)
+
+    class Meta:
+        db_table = 'Pastry_Inventory'
+
+
 if __name__ == '__main__':
     database.connect()
     # database.create_tables([Product])
     # database.create_tables([Customer])
     # database.create_tables([Staff])
-    database.create_tables([SalesOutlet])
+    # database.create_tables([SalesOutlet])
+    database.create_tables([PastryInventory])

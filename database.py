@@ -70,11 +70,15 @@ def insert_pastry_inventory(data):
     cursor = db.cursor()
     print("Database insertion started...")
     header = next(data_csv)
+    pastry_inventory_id = 1
 
     for row in data_csv:
+        row_data_list = list([pastry_inventory_id])
+        row_data_list.extend(row)
         cursor.execute(
-            "INSERT INTO coffeeShopEtl.Pastry_Inventory (sales_outlet_id,transaction_date,product_id,start_of_day,quantity_sold,waste,waste_percent) VALUES(%s,%s,%s,%s,%s,%s,%s)",
-            row)
+            "INSERT INTO coffeeShopEtl.Pastry_Inventory (pastry_inventory_id,sales_outlet_id,transaction_date,product_id,start_of_day,quantity_sold,waste,waste_percent) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+            row_data_list)
+        pastry_inventory_id += 1
 
     db.commit()
     cursor.close()
