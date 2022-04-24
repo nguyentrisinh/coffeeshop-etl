@@ -58,9 +58,28 @@ class Staff(BaseModel):
     class Meta:
         db_table = 'Staff'
 
+    
+class SalesOutlet(BaseModel):
+    sales_outlet_id = IntegerField(primary_key=True, unique=True, null=False)
+    sales_outlet_type = CharField(null=True, max_length=45)
+    sales_square_feet = IntegerField(null=True)
+    store_address = CharField(null=True, max_length=100)
+    store_city = CharField(null=True, max_length=45)
+    store_state_province = CharField(null=True, max_length=45)
+    store_telephone = CharField(null=True, max_length=45)
+    store_postal_code = CharField(null=True, max_length=45)
+    store_longitude = DecimalField(null=True, max_digits=20, decimal_places=10)
+    store_latitude = DecimalField(null=True, max_digits=20, decimal_places=10)
+    manager = IntegerField(null=True)
+    neighorhood = CharField(null=True, max_length=45)
+
+    class Meta:
+        db_table = 'Sales_Outlet'
+
 
 if __name__ == '__main__':
     database.connect()
     # database.create_tables([Product])
     # database.create_tables([Customer])
-    database.create_tables([Staff])
+    # database.create_tables([Staff])
+    database.create_tables([SalesOutlet])
