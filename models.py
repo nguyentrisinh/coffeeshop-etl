@@ -91,10 +91,32 @@ class PastryInventory(BaseModel):
         db_table = 'Pastry_Inventory'
 
 
+class SalesReceipts(BaseModel):
+    sales_receipts_id = IntegerField(primary_key=True, unique=True, null=False)
+    transaction_id = IntegerField(null=True)
+    transaction_date = DateField(null=True)
+    transaction_time = TimeField(null=True)
+    sales_outlet_id = IntegerField(null=True) # Foreign key
+    staff_id = IntegerField(null=True) # Foreign key
+    customer_id = IntegerField(null=True) # Foreign key
+    instore_yn = CharField(null=True, max_length=5)
+    order_num = IntegerField(null=True)
+    line_item_id = IntegerField(null=True)
+    product_id = IntegerField(null=True) # Foreign key
+    quantity = IntegerField(null=True)
+    line_item_amount = DecimalField(null=True, max_digits=10, decimal_places=2)
+    unit_price = DecimalField(null=True, max_digits=10, decimal_places=2)
+    promo_item_yn = CharField(null=True, max_length=5)
+
+    class Meta:
+        db_table = 'Sales_Receipts'
+
+
 if __name__ == '__main__':
     database.connect()
     # database.create_tables([Product])
     # database.create_tables([Customer])
     # database.create_tables([Staff])
     # database.create_tables([SalesOutlet])
-    database.create_tables([PastryInventory])
+    # database.create_tables([PastryInventory])
+    database.create_tables([SalesReceipts])

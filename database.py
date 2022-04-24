@@ -22,11 +22,16 @@ def insert_sales_receipts(data):
     cursor = db.cursor()
     print("Database insertion started...")
     header = next(data_csv)
+    pastry_inventory_id = 1
 
     for row in data_csv:
+        row_data_list = list([pastry_inventory_id])
+        row_data_list.extend(row)
         cursor.execute(
-            "INSERT INTO coffeeShopEtl.Sales_Receipts (transaction_id,transaction_date,transaction_time,sales_outlet_id,staff_id,customer_id,instore_yn,order_num,line_item_id,product_id,quantity,line_item_amount,unit_price,promo_item_yn) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-            row)
+            "INSERT INTO coffeeShopEtl.Sales_Receipts (sales_receipts_id,transaction_id,transaction_date,transaction_time,sales_outlet_id,staff_id,customer_id,instore_yn,order_num,line_item_id,product_id,quantity,line_item_amount,unit_price,promo_item_yn) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            row_data_list)
+
+        pastry_inventory_id += 1
 
     db.commit()
     cursor.close()

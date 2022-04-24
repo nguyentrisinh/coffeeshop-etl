@@ -10,5 +10,5 @@ if __name__ == '__main__':
     # database.insert_customer("datasources/customer.csv")
     # database.insert_staff("datasources/staff.csv")
     # database.insert_sales_outlet("datasources/sales_outlet.csv")
-    database.insert_pastry_inventory("datasources/pastry_inventory.csv")
-    # database.insert_sales_receipts("datasources/sales_reciepts.csv")
+    # database.insert_pastry_inventory("datasources/pastry_inventory.csv")
+    database.insert_sales_receipts("datasources/sales_reciepts.csv")
