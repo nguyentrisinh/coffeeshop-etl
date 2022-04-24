@@ -25,7 +25,7 @@ def insert_sales_receipts(data):
 
     for row in data_csv:
         cursor.execute(
-            "INSERT INTO coffee-shop-etl.Sales_Receipts (transaction_id,transaction_date,transaction_time,sales_outlet_id,staff_id,customer_id,instore_yn,order_num,line_item_id,product_id,quantity,line_item_amount,unit_price,promo_item_yn) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            "INSERT INTO coffeeShopEtl.Sales_Receipts (transaction_id,transaction_date,transaction_time,sales_outlet_id,staff_id,customer_id,instore_yn,order_num,line_item_id,product_id,quantity,line_item_amount,unit_price,promo_item_yn) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
             row)
 
     db.commit()
@@ -41,7 +41,7 @@ def insert_customer(data):
 
     for row in data_csv:
         cursor.execute(
-            "INSERT INTO coffee-shop-etl.Customer (customer_id,home_store,customer_first_name,customer_email,customer_since,loyalty_card_number,birthdate,gender,birth_year) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            "INSERT INTO coffeeShopEtl.Customer (customer_id,home_store,customer_first_name,customer_email,customer_since,loyalty_card_number,birthdate,gender,birth_year) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)",
             row)
 
     db.commit()
@@ -73,7 +73,7 @@ def insert_pastry_inventory(data):
 
     for row in data_csv:
         cursor.execute(
-            "INSERT INTO coffee-shop-etl.Pastry_Inventory (sales_outlet_id,transaction_date,product_id,start_of_day,quantity_sold,waste,waste_percent) VALUES(%s,%s,%s,%s,%s,%s,%s)",
+            "INSERT INTO coffeeShopEtl.Pastry_Inventory (sales_outlet_id,transaction_date,product_id,start_of_day,quantity_sold,waste,waste_percent) VALUES(%s,%s,%s,%s,%s,%s,%s)",
             row)
 
     db.commit()
@@ -94,7 +94,7 @@ def insert_sales_outlet(data):
             row[10] = -1
 
         cursor.execute(
-            "INSERT INTO coffee-shop-etl.Sales_Outlet (sales_outlet_id,sales_outlet_type,sales_square_feet,store_address,store_city,store_state_province,store_telephone,store_postal_code,store_longitude,store_latitude,manager,Neighorhood) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            "INSERT INTO coffeeShopEtl.Sales_Outlet (sales_outlet_id,sales_outlet_type,sales_square_feet,store_address,store_city,store_state_province,store_telephone,store_postal_code,store_longitude,store_latitude,manager,Neighorhood) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
             row)
 
     db.commit()
@@ -117,7 +117,7 @@ def insert_staff(data):
             transf_row[i] = row[i]
 
         cursor.execute(
-            "INSERT INTO \"coffee-shop-etl\".Staff (staff_id,first_name,last_name,positions,start_date,location) VALUES(%s,%s,%s,%s,%s,%s)",
+            "INSERT INTO coffeeShopEtl.Staff (staff_id,first_name,last_name,positions,start_date,location) VALUES(%s,%s,%s,%s,%s,%s)",
             transf_row)
 
     db.commit()

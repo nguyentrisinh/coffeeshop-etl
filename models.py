@@ -31,7 +31,23 @@ class Product(BaseModel):
     class Meta:
         db_table = 'Product'
 
+    
+class Customer(BaseModel):
+    customer_id = IntegerField(primary_key=True, unique=True, null=False)
+    home_store = IntegerField(null=True)
+    customer_first_name = CharField(null=True, max_length=45)
+    customer_email = CharField(null=True, max_length=45)
+    customer_since = DateField(null=True)
+    loyalty_card_number = CharField(null=True, max_length=45)
+    birthdate = DateField(null=True)
+    gender = CharField(null=True, max_length=5)
+    birth_year = DateField(null=True)
+    
+    class Meta:
+        db_table = 'Customer'
+
 
 if __name__ == '__main__':
     database.connect()
-    database.create_tables([Product])
+    # database.create_tables([Product])
+    database.create_tables([Customer])
